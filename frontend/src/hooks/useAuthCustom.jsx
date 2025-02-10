@@ -1,5 +1,4 @@
-//Auth hooks
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react';
 import AuthContext from "../context/AuthContext";
 
 const useAuthCustom = () => {
@@ -16,26 +15,28 @@ const useAuthCustom = () => {
                 },
                 body: JSON.stringify({ email, password })
             });
+
             if (!response.ok) {
-                throw new Error('Kullanıcı adı veya şifre yanlış!')
+                throw new Error('Kullanıcı adı veya şifre yanlış!');
             }
+
             const data = await response.json();
             dispatch({ type: 'LOGIN', payload: data.user });
-            localStorage.setItem('token', data._token);
+            localStorage.setItem('token', data.token);
 
         } catch (error) {
-            console.log(error.message);
-        }
-        finally{
+            alert(error.message); // Kullanıcıya hata mesajını göster
+            console.error("Giriş hatası:", error.message);
+        } finally {
             setLoading(false);
         }
-    }
+    };
+
     return {
         loading,
         login,
         state
-    }
+    };
+};
 
-}
-
-export default useAuthCustom
+export default useAuthCustom;
