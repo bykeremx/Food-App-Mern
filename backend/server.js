@@ -1,14 +1,18 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
+import cors from 'cors';
 
 //vt 
-import dbConnect  from "./config/db.js";
+import dbConnect from "./config/db.js";
 dotenv.config();
 const app = express();
 //routes 
 import routes from './routes/index.js';
 
+app.use(cors({
+    origin: '*',
+}));
 app.use(express.json());
 
 //request log middlewares 

@@ -23,7 +23,7 @@ export const login = expressAsyncHandler(async (req, res) => {
 
 
 export const register = expressAsyncHandler(async (req, res) => {
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
         return res.status(400).json({ message: "Lütfen tüm alanları doldurun!" });
@@ -40,9 +40,7 @@ export const register = expressAsyncHandler(async (req, res) => {
         name,
         email,
         password: hashedPassword,
-        role: role || "user", // Eğer rol belirtilmezse default olarak "user" atanır
     });
-
     res.status(201).json({
         message: "Kullanıcı kaydı başarılı!",
         user: {
@@ -56,4 +54,12 @@ export const register = expressAsyncHandler(async (req, res) => {
         _token: CreateJwt(user._id),
     });
 });
+
+//auth test 
+
+export const authTest = expressAsyncHandler(async (req, res) => {
+    res.json({ message: "Auth test successful" });
+});
+
+// profile get
 
