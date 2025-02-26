@@ -6,23 +6,23 @@ const Register = () => {
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const [confirmPassword, setConfirmPassword] = React.useState('');
-    const { state, login, loading, register } = useAuthCustom();
+    const [adress, setAdress] = React.useState('');
+    // const [confirmPassword, setConfirmPassword] = React.useState('');
+    const { loading, register } = useAuthCustom();
     const handleRegister = () => {
         // Registration logic here
         register(name, email, password);
     };
-
     return (
         <Container className="d-flex justify-content-center align-items-center min-vh-100">
             <Row className="w-100 justify-content-center">
                 <Col md={6} sm={12} className="p-4 bg-white">
-                    <h2 className="mb-4" style={{fontWeight:'bold'}}>Register</h2>
+                    <h2 className="mb-4" style={{ fontWeight: 'bold' }}>Register</h2>
                     <Form>
                         <FormGroup>
                             <div className='containerInput'>
                                 <Label for="name">Name</Label>
-                                <Input type="text"  className='inputText' id="name" placeholder="Enter your name"
+                                <Input type="text" className='inputText' id="name" placeholder="Enter your name"
                                     value={name} onChange={(e) => setName(e.target.value)} />
                             </div>
                         </FormGroup>
@@ -36,7 +36,7 @@ const Register = () => {
                         <FormGroup>
                             <div className='containerInput'>
                                 <Label for="password">Password</Label>
-                                <Input type="password" className='inputText'  id="password" placeholder="Enter your password"
+                                <Input type="password" className='inputText' id="password" placeholder="Enter your password"
                                     value={password} onChange={(e) => setPassword(e.target.value)} />
                             </div>
                         </FormGroup>
@@ -45,6 +45,13 @@ const Register = () => {
                             <Input type="password" id="confirmPassword" placeholder="Confirm your password"
                                 value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
                         </FormGroup> */}
+                        {/* adress  */}
+                        <FormGroup>
+                            <div className='containerInput'>
+                                <Label for="address">Address</Label>
+                                <Input type="text" className='inputText' id="address" value={adress} onChange={(e) => setAdress(e.target.value)} placeholder="Enter your address" />
+                            </div>
+                        </FormGroup>
                         <Button className='buttonInput' color="primary" block onClick={handleRegister} disabled={loading}>
                             {loading ? "Loading..." : "Register"}
                         </Button>

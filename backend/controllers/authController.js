@@ -23,24 +23,36 @@ export const login = expressAsyncHandler(async (req, res) => {
 
 
 export const register = expressAsyncHandler(async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, address } = req.body;
 
-    if (!name || !email || !password) {
+    // Gerekli alanların dolu olup olmadığını kontrol et
+    if (!name || !email || !password || !address) {
         return res.status(400).json({ message: "Lütfen tüm alanları doldurun!" });
     }
 
+    // Address alanının bir dizi olup olmadığını kontrol et
+    if (!Array.isArray(address) || address.length === 0) {
+        return res.status(400).json({ message: "Adres bilgisi eksik veya hatalı!" });
+    }
+
+    // E-posta adresinin zaten kayıtlı olup olmadığını kontrol et
     const existingEmail = await UserModel.findOne({ email });
     if (existingEmail) {
         return res.status(400).json({ message: "Bu e-posta zaten kullanımda!" });
     }
 
+    // Şifreyi hashle
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Kullanıcıyı oluştur
     const user = await UserModel.create({
         name,
         email,
         password: hashedPassword,
+        address, // Adresi ekledik
     });
+
+    // Başarı yanıtı gönder
     res.status(201).json({
         message: "Kullanıcı kaydı başarılı!",
         user: {
@@ -50,6 +62,7 @@ export const register = expressAsyncHandler(async (req, res) => {
             role: user.role,
             isActive: user.isActive,
             created_at: user.created_at,
+            address: user.address, // Adres bilgisini döndürelim
         },
         _token: CreateJwt(user._id),
     });

@@ -46,7 +46,7 @@ const useAuthCustom = () => {
             setLoading(false);
         }
     };
-    const register = async (name, email, password) => {
+    const register = async (name, email, password,adress) => {
         setLoading(true);
         try {
             const response = await fetch('http://localhost:3030/api/user/register', {
@@ -54,7 +54,7 @@ const useAuthCustom = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, email, password })
+                body: JSON.stringify({ name, email, password ,adress})
             });
             if (!response.ok) {
                 throw new Error('Kayıt Olunamadı ! ' + response.message);
