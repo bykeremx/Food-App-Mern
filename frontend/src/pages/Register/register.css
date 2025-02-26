@@ -1,0 +1,55 @@
+/* Genel Stil */
+.registerText {
+    color: #444;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Input Alanları */
+.inputText {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transition: all 0.2s;
+}
+
+.inputText:focus {
+    outline: none !important;
+    /* border: none !important; */
+    box-shadow: none !important;
+    border-bottom: 5px solid rgb(44, 44, 44) !important  ;
+    transition: all 0.2s;
+}
+
+/* Input Konteyneri */
+.containerInput {
+    margin-top: 10px;
+    border: 1px solid #cacaca;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    /* transition: all 0.1s; */
+}
+
+/* Buton Stili */
+.buttonInput {
+    background-color: #f02b2b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: rgba(38, 57, 77, 0.5) 0px 20px 30px -10px;
+    /* transition:all 0.1s; */
+
+}
+
+.buttonInput:hover {
+    background-color: #e12626;
+}
+.loginText{
+    font-size: 17px;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
