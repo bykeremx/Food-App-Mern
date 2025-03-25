@@ -11,8 +11,12 @@ const app = express();
 import routes from './routes/index.js';
 
 app.use(cors({
-    origin: '*',
+    origin: 'http://localhost:3000', // React uygulamanın URL'si
+    credentials: true, // Cookies ve oturumlar için gerekli
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // İzin verilen HTTP metodları
+    allowedHeaders: ['Content-Type', 'Authorization'], // İzin verilen başlıklar
 }));
+
 app.use(express.json());
 
 //request log middlewares 

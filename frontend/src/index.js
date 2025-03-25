@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from './context/AuthContext';
 import { FoodProvider } from './context/FoodContext';
+import Header from './components/header/Header';
 import App from './App';
 import { ToastContainer } from 'react-toastify';
 
@@ -15,6 +16,7 @@ root.render(
   <AuthProvider>
     <FoodProvider>
       <BrowserRouter>
+      <Header></Header>
         <App></App>
         <ToastContainer></ToastContainer>
       </BrowserRouter>

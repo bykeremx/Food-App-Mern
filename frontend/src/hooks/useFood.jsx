@@ -1,10 +1,12 @@
-import React, { useState, useContext } from 'react'
+import { useState, useContext } from 'react';
 import FoodContext from '../context/FoodContext';
+import { toast, Bounce } from 'react-toastify';
 
 const useFood = () => {
-    const [loading, setLoading] = useState();
+    const [loading, setLoading] = useState(false);
     const { state, dispatch } = useContext(FoodContext);
-    // fetch data from API
+
+    // Fetch data from API
     const getFood = async () => {
         setLoading(true);
         try {
@@ -20,11 +22,46 @@ const useFood = () => {
         } finally {
             setLoading(false);
         }
+    };
+
+    // Correct AddToCart function, use food object directly
+    const AddToCard = (food) => {
+        dispatch({ type: 'ADD_TO_CART', payload: food }); // Send correct food object
+        toast(` ${food.name} Sepete eklendi`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+        });
+
+    };
+    const removeCards = (id) => {
+        dispatch({ type: 'REMOVE_FROM_CART', payload: id }); // Send correct food id
+        toast(`Sepetten Çıkartıldı`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+        });
     }
+
     return {
         loading,
+        state,
         getFood,
-    }
+        AddToCard ,// Expose addToCart for use in components
+        removeCards
+    };
 }
 
-export default useFood
+export default useFood;

@@ -1,67 +1,102 @@
-header{
-    position: relative;
-    background: white;
-    padding: 0;
-    border-bottom: 1px solid #e72929;
-  }
-  
-  a{
-    color: #af1313;
-  }
-  
-  a:hover{
-    background:#e72929;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .container{
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  a.logo{
-    font-weight: bold;
-    padding: 1rem;
-  }
-  
-  ul{
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-  }
-  
-  ul a{
-    padding: 1rem;
-    display: inline-block;
-  }
-  
-  a span{
-    background: #ff4d4d;
-    color: white;
-    padding: 0.1rem 0.45rem;
-    border-radius: 100rem;
-    font-size:0.9rem;
-  }
-  
-  .menu-container{
-    position: relative;
-  }
-  
-  .menu{
-    position:absolute;
-    z-index:1;
-    background:whitesmoke;
-    display: none;
-  }
-  
-  .menu-container:hover .menu{
-    display: block;
-  }
-  
-  .menu a{
-    width: 100%;
-    min-width:8rem;
-  }
-  
+/* Navbar Styling */
+.custom-navbar {
+  border-bottom: 2px solid red; /* Alt kenarlık kırmızı */
+  border-radius: 0;
+}
+
+/* Menu item Styling */
+.nav-link {
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Icon Styling */
+.nav-icon {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+/* Hover Effects */
+.nav-link:hover {
+  color: red;
+}
+
+/* Left and Right Alignment */
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+
+
+.cart-badge {
+  right: -8px;
+  background-color: red;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-left: 10px !important;
+  padding: 15px !important;
+}
+
+.cart-dropdown {
+  min-width: 250px;
+  padding: 10px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cart-item-name {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.cart-item-price {
+  font-size: 14px;
+  color: #555;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.remove-btn:hover {
+
+  background-color: #bcbcbc;
+}
+
+.cart-total {
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0;
+}

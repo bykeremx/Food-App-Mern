@@ -9,9 +9,9 @@ const Register = () => {
     const [adress, setAdress] = React.useState('');
     // const [confirmPassword, setConfirmPassword] = React.useState('');
     const { loading, register } = useAuthCustom();
-    const handleRegister = () => {
+    const handleRegister = async() => {
         // Registration logic here
-        register(name, email, password);
+        await register(name, email, password,[adress]);
     };
     return (
         <Container className="d-flex justify-content-center align-items-center min-vh-100">
@@ -40,11 +40,6 @@ const Register = () => {
                                     value={password} onChange={(e) => setPassword(e.target.value)} />
                             </div>
                         </FormGroup>
-                        {/* <FormGroup>
-                            <Label for="confirmPassword">Confirm Password</Label>
-                            <Input type="password" id="confirmPassword" placeholder="Confirm your password"
-                                value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                        </FormGroup> */}
                         {/* adress  */}
                         <FormGroup>
                             <div className='containerInput'>

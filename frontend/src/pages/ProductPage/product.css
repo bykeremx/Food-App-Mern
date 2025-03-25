@@ -1,0 +1,83 @@
+.searchbar {
+    border-radius: 30px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: rgb(233, 233, 233);
+    border: none;
+    outline: none;
+    color: black;
+}
+
+.searchbar::placeholder {
+    color: rgb(41, 41, 41);
+}
+
+.custom-card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    border: 1px solid rgb(244, 244, 244) !important;
+}
+
+.custom-card:hover {
+    transform: scale(1.02);
+}
+
+.food-image {
+    width: 150px; /* Küçük resim */
+    height: 150px;
+    object-fit: cover;
+    margin: 10px auto;
+}
+
+.food-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: rgb(255, 88, 88);
+}
+
+.heart-icon {
+    color: red;
+    font-size: 10px;
+}
+
+.food-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.country-badge {
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 20px !important;
+    background-color: rgb(226, 226, 226) !important;
+    color: rgb(116, 116, 116);
+}
+
+.time-info {
+    font-size: 15px;
+    color:rgb(225, 77, 77);
+}
+
+.price {
+    font-size: 20px;
+    color: #555555;
+}
+
+.add-to-cart {
+    width: 100%;
+    background: #007bff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 30px;
+    transition: all 0.2s ease-in-out;
+}
+
+.add-to-cart:hover {
+    background: #0056b3;
+    transform: scale(0.970);
+}

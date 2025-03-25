@@ -1,6 +1,6 @@
 import expressAsyncHandler from "express-async-handler";
 import bcrypt from "bcrypt";
-import UserModel from '../models/userModel.js';
+import UserModel from '../models/UserModel.js';
 import CreateJwt from "../jwt/jwtCreate.js";
 
 

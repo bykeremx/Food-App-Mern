@@ -26,7 +26,7 @@ const useAuthCustom = () => {
             dispatch({ type: 'LOGIN', payload: data.user });
             console.log(data);
             localStorage.setItem('token', data._token);
-            // localStorage.setItem('user', JSON.stringify(data.user));
+            localStorage.setItem('user', JSON.stringify(data.user));
             toast(` Hoşgeldin ! ${data.user.name}`, {
                 position: "top-center",
                 autoClose: 5000,
@@ -54,7 +54,7 @@ const useAuthCustom = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, email, password ,adress})
+                body: JSON.stringify({ name, email, password ,address:adress})
             });
             if (!response.ok) {
                 throw new Error('Kayıt Olunamadı ! ' + response.message);
@@ -73,6 +73,7 @@ const useAuthCustom = () => {
             });
             dispatch({ type: 'LOGIN', payload: data.user });
             localStorage.setItem('token', data._token);
+            localStorage.setItem('user', data.user);
         } catch (error) {
             toast(`${error.message}!`, {
                 position: "top-center",
