@@ -1,18 +1,19 @@
 import { Navigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuthCustom.jsx"
+import useAuth from "../../hooks/useAuthCustom";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, adminOnly = false }) => {
   const { state } = useAuth();
   const user = state.user;
 
-//   return user ? children : <Navigate to="/login" replace />;
-
-  if(!user){
+  if (!user) {
     return <Navigate to="/login" replace />;
   }
-  if(user){
-    return children;
+
+  if (adminOnly && user.role !== "admin") {
+    return <Navigate to="/" replace />;
   }
+
+  return children;
 };
 
 export default ProtectedRoute;

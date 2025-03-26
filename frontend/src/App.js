@@ -1,8 +1,9 @@
-import { Routes, Route, Router } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProtectedRoute from './components/header/protectedRoute';
 import Product from './pages/ProductPage/Product';
+import AdminPanel from './pages/admin/index/AdminPanel';
 
 const App = () => {
   return (
@@ -14,6 +15,11 @@ const App = () => {
           <Product></Product>
         </ProtectedRoute>
       }></Route>
+      <Route path="/admin" element={
+        <ProtectedRoute adminOnly={true}>
+          <AdminPanel />
+        </ProtectedRoute>
+      } />
     </Routes>
   );
 };

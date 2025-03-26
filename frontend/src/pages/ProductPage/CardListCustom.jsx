@@ -9,7 +9,7 @@ const CardListCustom = ({ food }) => {
         <Card className="custom-card">
             {/* Küçük Resim ve Gölge */}
             <CardImg
-                src={"https://placehold.co/200"}
+                src={food.image}
                 alt="Food image"
                 className="food-image"
             />

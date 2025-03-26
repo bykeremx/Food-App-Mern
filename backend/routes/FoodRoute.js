@@ -3,17 +3,34 @@ import Food from '../models/Food.js'
 const router = express.Router();
 
 // 🍽️ Yeni Yemek Ekle
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
+    const { name, description, price, category, image, ingredients, isAvailable } = req.body;
+
     try {
-        const { name, description, price, category, image, ingredients, isAvailable } = req.body;
-        const newFood = new Food({ name, description, price, category, image, ingredients, isAvailable });
-        await newFood.save();
-        res.status(201).json(newFood);
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-            error: error.stack,
+        // Gelen verileri doğrula
+        if (!name || !description || !price || !category || !image || !ingredients) {
+            return res.status(400).json({ message: 'Tüm alanları doldurduğunuzdan emin olun!' });
+        }
+
+        // Yeni yemek oluştur
+        const newFood = new Food({
+            name,
+            description,
+            price,
+            category,
+            image,
+            ingredients,
+            isAvailable,
         });
+
+        // Veriyi kaydet
+        const savedFood = await newFood.save();
+
+        // Başarılı cevap dön
+        res.status(201).json(savedFood);
+    } catch (error) {
+        console.error("Yemek eklenirken hata oluştu:", error);
+        res.status(500).json({ message: 'Sunucu hatası, yemek eklenemedi.' });
     }
 });
 
@@ -40,9 +57,17 @@ router.put("/:id", async (req, res) => {
 // 🍽️ Yemek Silme
 router.delete("/:id", async (req, res) => {
     try {
-        await FoodModel.findByIdAndDelete(req.params.id);
+        console.log("Silinmek istenen ID:", req.params.id);
+
+        const deletedFood = await Food.findByIdAndDelete(req.params.id);
+
+        if (!deletedFood) {
+            return res.status(404).json({ message: "Bu ID'ye sahip yemek bulunamadı." });
+        }
+
         res.json({ message: "Yemek silindi" });
     } catch (error) {
+        console.error("Silme hatası:", error);
         res.status(500).json({ message: error.message });
     }
 });
