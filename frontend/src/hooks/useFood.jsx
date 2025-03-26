@@ -97,7 +97,7 @@ const useFood = () => {
     const removeFoodAdmin = async (id) => {
         setLoading(true);
         try {
-            console.log("Silinmek istenen ID:", id);
+            console.log("Silinmek istenen ID:", id); // deneme 
     
             const response = await fetch(`http://localhost:3030/api/food/${id}`, { method: 'DELETE' });
             const data = await response.json();
