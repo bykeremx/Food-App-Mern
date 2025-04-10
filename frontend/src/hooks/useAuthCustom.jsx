@@ -46,7 +46,7 @@ const useAuthCustom = () => {
             setLoading(false);
         }
     };
-    const register = async (name, email, password,adress) => {
+    const register = async (name, email, password, adress) => {
         setLoading(true);
         try {
             const response = await fetch('http://localhost:3030/api/user/register', {
@@ -54,7 +54,7 @@ const useAuthCustom = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, email, password ,address:adress})
+                body: JSON.stringify({ name, email, password, address: adress })
             });
             if (!response.ok) {
                 throw new Error('Kayıt Olunamadı ! ' + response.message);
@@ -73,7 +73,8 @@ const useAuthCustom = () => {
             });
             dispatch({ type: 'LOGIN', payload: data.user });
             localStorage.setItem('token', data._token);
-            localStorage.setItem('user', data.user);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            
         } catch (error) {
             toast(`${error.message}!`, {
                 position: "top-center",
@@ -87,7 +88,7 @@ const useAuthCustom = () => {
                 transition: Bounce,
             });
             console.error("Kayıt hatası:", error.message);
-        }finally{
+        } finally {
             setLoading(false);
         }
 
